@@ -6,38 +6,51 @@
 /*   By: arpenel <arpenel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:31:43 by arpenel           #+#    #+#             */
-/*   Updated: 2024/12/17 14:07:30 by arpenel          ###   ########.fr       */
+/*   Updated: 2024/12/20 16:29:07 by arpenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdarg.h>
 
-char	*print_n_find(const char *str) // Function to find the '%' and print the string
+void	ft_check_type(char c, va_list ap) // Function to check the type specifier
 {
-	unsigned int	i;
-
-	i = 0;
-	while(str[i])
+	if(c == 'c')
 	{
-		if(str[i] == '%')
-		{
-			i++;
-			return ((char *)&str[i]);
-		}
-		else
-		{
-			ft_putchar(str[i]);
-			i++;
-		}	
+		char car = va_arg(ap, char);
+		ft_putchar(c);
+	}	
+	if(c == 's')
+	{
+		char *string = va_arg(ap, char *);
+		ft_putstr(string);
+	}
+	if(c == 'i')
+	{
+		int	i = va_arg(ap, int);
+		ft_putchar(i + 48);
 	}
 }
 
-
-
-
-
-int	ft_printf(const char *str, ...)
+char	*print_n_find(const char *str) // Function to find the '%' and print caracter before
 {
-	va_list args;
+	while(*str)
+	{
+		if(*str == '%')
+		{
+			str++;
+			ft_check_type(*str, ap);
+		}
+		else
+			ft_putchar(*str);
+		str++;
+	}
+}|
+
+char*print_n_find(const char *str)
+{
+	va_list ap;
+	va_start(ap, *str);
+
+	va_end();
 }
