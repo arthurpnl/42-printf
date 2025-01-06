@@ -28,13 +28,14 @@ void	ft_check_type(char c, va_list ap) // Function to check the type specifier
 	if(c == 'i' || c == 'd') // Decimal signed integer
 	{
 		int	i = va_arg(ap, int);
-		ft_putchar(i + 48);
+		ft_putnbr(i);
 	}
 	if(c = 'u')
 	{
 		unsigned int u = va_arg(ap, unsigned int); // Unsigned integer
 		ft_putnbr(u);
 	}
+	if 
 	if(c == '%')
 		ft_putchar('%');
 }
