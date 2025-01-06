@@ -32,7 +32,7 @@ void	ft_check_type(char c, va_list ap) // Function to check the type specifier
 	}
 }
 
-char	*print_n_find(const char *str) // Function to find the '%' and print caracter before
+char	*print_n_find(const char *str, va_list ap) // Function to find the '%' and print caracter before
 {
 	while(*str)
 	{
@@ -47,10 +47,11 @@ char	*print_n_find(const char *str) // Function to find the '%' and print caract
 	}
 }|
 
-char*print_n_find(const char *str)
+int	ft_printf(const char *format, ...)
 {
 	va_list ap;
-	va_start(ap, *str);
+	va_star(ap, format);
 
-	va_end();
+	print_n_find(ap, format);
+	va_end(ap);
 }
