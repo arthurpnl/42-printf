@@ -15,27 +15,24 @@
 
 void	ft_check_type(char c, va_list ap) // Function to check the type specifier
 {
-	if(c == 'c')
-	{
-		char car = va_arg(ap, int);
-		ft_putchar(c);
-	}	
+	char *x;
+	char *X;
+
+	x = "0123456789abcdef";
+	X = "0123456789ABCDEF";
+
+	if(c == 'c') // Single caracter
+		ft_putchar(va_arg(ap, int));
 	if(c == 's') // String 
-	{
-		char *string = va_arg(ap, char *);
-		ft_putstr(string);
-	}
+		ft_pustr(va_arg(ap, char *));
 	if(c == 'i' || c == 'd') // Decimal signed integer
-	{
-		int	i = va_arg(ap, int);
-		ft_putnbr(i);
-	}
+		ft_putnbr(va_arg(ap, int));
 	if(c = 'u')
-	{
-		unsigned int u = va_arg(ap, unsigned int); // Unsigned integer
-		ft_putnbr(u);
-	}
-	if 
+		ft_putnbr(va_arg(ap, unsigned int)); // Unsigned integer
+	if(c == 'x')
+		ft_putnbr_base(va_arg(ap, int), base);
+	if (c == 'X')
+		ft_putnbr_base(va_arg(ap, int), base);
 	if(c == '%')
 		ft_putchar('%');
 }
