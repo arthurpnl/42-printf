@@ -30,9 +30,9 @@ void	ft_check_type(char c, va_list ap) // Function to check the type specifier
 	if(c = 'u')
 		ft_putnbr(va_arg(ap, unsigned int)); // Unsigned integer
 	if(c == 'x')
-		ft_putnbr_base(va_arg(ap, int), base);
+		ft_putnbr_base(va_arg(ap, unsigned int), 16, c);
 	if (c == 'X')
-		ft_putnbr_base(va_arg(ap, int), base);
+		ft_putnbr_base(va_arg(ap, unsigned int), 16, c);
 	if(c == '%')
 		ft_putchar('%');
 }
