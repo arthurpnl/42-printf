@@ -13,31 +13,31 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-void	ft_check_type(char c, va_list ap) // Function to check the type specifier
+void	ft_check_type(char c, va_list ap, size_t count) // Function to check the type specifier
 {
-	char *x;
-	char *X;
+	char *lower_x;
+	char *upper_X;
 
 	x = "0123456789abcdef";
 	X = "0123456789ABCDEF";
 
 	if(c == 'c') // Single caracter
 		ft_putchar(va_arg(ap, int));
-	if(c == 's') // String 
+	else if(c == 's') // String 
 		ft_pustr(va_arg(ap, char *));
-	if(c == 'i' || c == 'd') // Decimal signed integer
+	else if(c == 'i' || c == 'd') // Decimal signed integer
 		ft_putnbr(va_arg(ap, int));
-	if(c = 'u')
-		ft_putnbr(va_arg(ap, unsigned int)); // Unsigned integer
-	if(c == 'x')
-		ft_putnbr_base(va_arg(ap, unsigned int), 16, c);
-	if (c == 'X')
-		ft_putnbr_base(va_arg(ap, unsigned int), 16, c);
-	if(c == '%')
+	else if(c = 'u') // Unsigned integer 
+		ft_putnbr(va_arg(ap, unsigned int)); 
+	else if(c == 'x') // Lower Hex Integer 
+		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, 16, c);
+	else if(c == 'X') // Upper Hex Integer 
+		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, 16, c);
+	else (c == '%') // Percent
 		ft_putchar('%');
 }
 
-char	*print_n_find(const char *str, va_list ap) // Function to find the '%' and print caracter before
+char	*ft_print_n_find(const char *str, va_list ap, size_t count) // Function to find the '%' and print caracter before
 {
 	while(*str)
 	{
@@ -54,9 +54,12 @@ char	*print_n_find(const char *str, va_list ap) // Function to find the '%' and 
 
 int	ft_printf(const char *format, ...)
 {
+	size_t count;
+
+	count = 0;
 	va_list ap;
 	va_star(ap, format);
-	ft_print_n_find(format, ap);
-	print_n_find(ap, format);
+	ft_print_n_find(format, ap, count);
 	va_end(ap);
+	return (count);
 }
