@@ -17,19 +17,26 @@ void	ft_check_type(char c, va_list ap) // Function to check the type specifier
 {
 	if(c == 'c')
 	{
-		char car = va_arg(ap, char);
+		char car = va_arg(ap, int);
 		ft_putchar(c);
 	}	
-	if(c == 's')
+	if(c == 's') // String 
 	{
 		char *string = va_arg(ap, char *);
 		ft_putstr(string);
 	}
-	if(c == 'i')
+	if(c == 'i' || c == 'd') // Decimal signed integer
 	{
 		int	i = va_arg(ap, int);
 		ft_putchar(i + 48);
 	}
+	if(c = 'u')
+	{
+		unsigned int u = va_arg(ap, unsigned int); // Unsigned integer
+		ft_putnbr(u);
+	}
+	if(c == '%')
+		ft_putchar('%');
 }
 
 char	*print_n_find(const char *str, va_list ap) // Function to find the '%' and print caracter before
@@ -51,7 +58,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list ap;
 	va_star(ap, format);
-
+	ft_print_n_find(format, ap);
 	print_n_find(ap, format);
 	va_end(ap);
 }
