@@ -28,12 +28,12 @@ void	ft_check_type(char c, va_list ap, size_t count) // Function to check the ty
 	else if(c == 'i' || c == 'd') // Decimal signed integer
 		ft_putnbr(va_arg(ap, int));
 	else if(c = 'u') // Unsigned integer 
-		ft_putnbr(va_arg(ap, unsigned int)); 
+		ft_putnbr_base(va_arg(ap, unsigned int), "01234568789"); 
 	else if(c == 'x') // Lower Hex Integer 
-		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, 16, c);
+		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, 16);
 	else if(c == 'X') // Upper Hex Integer 
-		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, 16, c);
-	else (c == '%') // Percent
+		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, 16);
+	else if(c == '%') // Percent
 		ft_putchar('%');
 }
 
@@ -58,7 +58,7 @@ int	ft_printf(const char *format, ...)
 
 	count = 0;
 	va_list ap;
-	va_star(ap, format);
+	va_start(ap, format);
 	ft_print_n_find(format, ap, count);
 	va_end(ap);
 	return (count);
