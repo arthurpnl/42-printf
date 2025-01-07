@@ -6,7 +6,7 @@
 /*   By: arpenel <arpenel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:31:43 by arpenel           #+#    #+#             */
-/*   Updated: 2025/01/07 12:59:18 by arpenel          ###   ########.fr       */
+/*   Updated: 2025/01/07 14:18:52 by arpenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,22 @@ void	ft_check_type(char c, va_list ap, size_t count)
 	char	*lower_x;
 	char	*upper_x;
 
-	x = "0123456789abcdef";
-	X = "0123456789ABCDEF";
+	lower_x = "0123456789abcdef";
+	upper_x = "0123456789ABCDEF";
 	if (c == 'c')
-		ft_putchar(va_arg(ap, int));
+		ft_putchar(va_arg(ap, int), &count);
 	else if (c == 's')
-		ft_pustr(va_arg(ap, char *));
+		ft_putstr(va_arg(ap, char *), &count);
 	else if (c == 'i' || c == 'd')
-		ft_putnbr(va_arg(ap, int));
+		ft_putnbr(va_arg(ap, int), &count);
 	else if (c == 'u')
-		ft_putnbr_base(va_arg(ap, unsigned int), "01234568789");
+		ft_putnbr_base(va_arg(ap, unsigned int), "01234568789", &count);
 	else if (c == 'x')
-		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, 16);
+		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, "0123456789abcdef",
+			&count);
 	else if (c == 'X')
-		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, 16);
+		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, "0123456789ABCDEF",
+			&count);
 	else if (c == '%')
 		ft_putchar('%');
 }
