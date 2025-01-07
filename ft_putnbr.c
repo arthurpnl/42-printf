@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arpenel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: arpenel <arpenel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:30:25 by arpenel           #+#    #+#             */
-/*   Updated: 2025/01/06 11:30:26 by arpenel          ###   ########.fr       */
+/*   Updated: 2025/01/07 13:20:57 by arpenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void    ft_putnbr(int n)
+void	ft_putnbr(int n)
 {
-    long    nb;
+	long	nb;
 
-    nb = n; 
-    if(nb >= 0 && nb <= 9)
-        ft_putchar(nb);
-    if(nb < 0)
-    {
-        ft_putchar('-');
-        nb *= -1;
-    }
-    if (nb > 9)
-    {
-        ft_putnbr(nb / 10);
-        ft_putnbr((nb % 10) + 48);
-    }
+	nb = n;
+	if (nb >= 0 && nb <= 9)
+		ft_putchar(nb);
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb *= -1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr((nb % 10) + 48);
+	}
 }
