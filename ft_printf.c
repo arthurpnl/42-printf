@@ -19,6 +19,12 @@ static void	ft_check_type(char c, va_list ap, size_t *count)
 
 	lower_x = "0123456789abcdef";
 	upper_x = "0123456789ABCDEF";
+
+	if (c == 'p')
+	{
+		ft_putstr("0x", count);
+		ft_putnbr_base(va_arg(ap, unsigned int), "0123456789abcdef", count);	
+	}
 	if (c == 'c')
 		ft_putchar(va_arg(ap, int), count);
 	else if (c == 's')
@@ -38,7 +44,7 @@ static void	ft_check_type(char c, va_list ap, size_t *count)
 static char	*ft_print_n_find(const char *str, va_list ap, size_t *count)
 {
 	while (*str)
-	{
+	{ 
 		if (*str == '%')
 		{
 			str++;
@@ -64,3 +70,4 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
+
