@@ -64,9 +64,10 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 
 	count = 0;
+	if (!format)
+		return (-1);
 	va_start(ap, format);
 	ft_print_n_find(format, ap, &count);
 	va_end(ap);
 	return (count);
 }
-
