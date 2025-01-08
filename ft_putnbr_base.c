@@ -21,17 +21,17 @@ void	ft_putnbr_base(int nbr, char *base, size_t *count)
 	nb = nbr;
 	size = ft_strlen(base);
 	if (nb == 0)
-		ft_putchar('0', &count);
+		ft_putchar('0', count);
 	if (nb < 0)
 	{
-		ft_putchar('-', &count);
+		ft_putchar('-', count);
 		nb *= -1;
 	}
 	if (nb > 0 && nb < size)
-		ft_putchar(base[nb], &count);
+		ft_putchar(base[nb], count);
 	if (nb >= size)
 	{
-		ft_putnbr_base(nb / size, base, &count);
-		ft_putnbr_base(nb % size, base, &count);
+		ft_putnbr_base(nb / size, base, count);
+		ft_putnbr_base(nb % size, base, count);
 	}
 }

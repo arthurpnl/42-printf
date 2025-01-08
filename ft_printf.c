@@ -12,8 +12,9 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
-void	ft_check_type(char c, va_list ap, size_t count)
+void	ft_check_type(char c, va_list ap, size_t *count)
 {
 	char	*lower_x;
 	char	*upper_x;
@@ -21,36 +22,35 @@ void	ft_check_type(char c, va_list ap, size_t count)
 	lower_x = "0123456789abcdef";
 	upper_x = "0123456789ABCDEF";
 	if (c == 'c')
-		ft_putchar(va_arg(ap, int), &count);
+		ft_putchar(va_arg(ap, int), count);
 	else if (c == 's')
-		ft_putstr(va_arg(ap, char *), &count);
+		ft_putstr(va_arg(ap, char *), count);
 	else if (c == 'i' || c == 'd')
-		ft_putnbr(va_arg(ap, int), &count);
+		ft_putnbr(va_arg(ap, int), count);
 	else if (c == 'u')
-		ft_putnbr_base(va_arg(ap, unsigned int), "01234568789", &count);
+		ft_putnbr_base(va_arg(ap, unsigned int), "01234568789", count);
 	else if (c == 'x')
-		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, "0123456789abcdef",
-			&count);
+		ft_putnbr_base(va_arg(ap, unsigned int), lower_x, count);
 	else if (c == 'X')
-		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, "0123456789ABCDEF",
-			&count);
+		ft_putnbr_base(va_arg(ap, unsigned int), upper_x, count);
 	else if (c == '%')
-		ft_putchar('%');
+		ft_putchar('%', count);
 }
 
-char	*ft_print_n_find(const char *str, va_list ap, size_t count)
+char	*ft_print_n_find(const char *str, va_list ap, size_t *count)
 {
 	while (*str)
 	{
 		if (*str == '%')
 		{
 			str++;
-			ft_check_type(*str, ap);
+			ft_check_type(*str, ap, count);
 		}
 		else
-			ft_putchar(*str, &count);
+			ft_putchar(*str, count);
 		str++;
 	}
+	return((char *)str);
 }
 
 int	ft_printf(const char *format, ...)
@@ -60,7 +60,18 @@ int	ft_printf(const char *format, ...)
 
 	count = 0;
 	va_start(ap, format);
-	ft_print_n_find(format, ap, count);
+	ft_print_n_find(format, ap, &count);
 	va_end(ap);
+	printf("Number of Character printed : %zu\n", count);
 	return (count);
+}
+
+int	main(void)
+{
+	char	*str;
+
+	str = "| Is it working ?";
+	ft_printf("Doing a test %s\n", str);
+	printf("Doing a test %s\n", str);
+	return(0);
 }

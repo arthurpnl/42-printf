@@ -19,8 +19,7 @@ void	ft_putstr(char *str, size_t *count)
 	i = 0;
 	while (str[i])
 	{
-		ft_putchar(str[i]);
-		(*count)++;
+		ft_putchar(str[i], count);
 		i++;
 	}
 }

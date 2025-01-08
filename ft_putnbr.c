@@ -16,13 +16,13 @@ void	ft_putnbr(int n, size_t *count)
 
 	nb = n;
 	if (nb >= 0 && nb <= 9)
-		ft_putchar(nb, &count);
+		ft_putchar(nb, count);
 	if (nb < 0)
 	{
-		ft_putchar('-', &count);
+		ft_putchar('-', count);
 		nb *= -1;
 	}
 	if (nb > 9)
-		ft_putnbr(nb / 10, &count);
-	ft_putchar((nb % 10) + 48, &count);
+		ft_putnbr(nb / 10, count);
+	ft_putchar((nb % 10) + 48, count);
 }
