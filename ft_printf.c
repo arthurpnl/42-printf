@@ -50,7 +50,7 @@ char	*ft_print_n_find(const char *str, va_list ap, size_t *count)
 			ft_putchar(*str, count);
 		str++;
 	}
-	return((char *)str);
+	return ((char *)str);
 }
 
 int	ft_printf(const char *format, ...)
@@ -62,7 +62,6 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	ft_print_n_find(format, ap, &count);
 	va_end(ap);
-	printf("Number of Character printed : %zu\n", count);
 	return (count);
 }
 
@@ -73,5 +72,5 @@ int	main(void)
 	str = "| Is it working ?";
 	ft_printf("Doing a test %s\n", str);
 	printf("Doing a test %s\n", str);
-	return(0);
+	return (0);
 }
