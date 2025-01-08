@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
-
-void	ft_putchar(char c, size_t *count);
+#include "ft_printf.h"
 
 void	ft_putstr(char *str, size_t *count)
 {

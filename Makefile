@@ -1,37 +1,30 @@
-NAME = printf.a
+NAME = libftprintf.a
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-AR = ar rcs
-RM = rm -f
+CC = cc
 
-FILES = ft_printf \
-		ft_putchar \
-		ft_putnbr_base \
-		ft_putnbr \
-		ft_putstr \
-		ft_strlen \
+SRCS = ./ft_printf.c ./ft_putchar.c ./ft_putnbr_base.c ./ft_putnbr.c ./ft_putstr.c ./ft_strlen.c
 
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+INCLUDES = ft_printf.h
 
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
+OBJ = $(SRCS:.c=.o)
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+CFLAGS = -Wall -Werror -Wall
 
-$(NAME): $(OBJS)
-	$(AR) $@ $<
+all : $(NAME)
 
-all: $(NAME)
+$(NAME) : $(OBJ)
+		ar -rc $(NAME) $(OBJ)
 
-clean:
-	$(RM) $(OBJS)
+.c.o :
+		$(CC) $(CFLAGS) -c -I $(INCLUDES) $< -o $@
 
-fclean:
-	$(RM) $(NAME)
+clean :
+		rm -rf $(OBJ)
 
-re: clean all
+fclean : clean
+		rm -rf $(NAME)
 
-.PHONY: all clean fclean re
+re :
+		make fclean all
+
+.PHONY: clean fclean all re
