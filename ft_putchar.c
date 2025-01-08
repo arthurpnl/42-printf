@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stddef.h>
+
 void	ft_putchar(char c, size_t *count)
 {
 	write(1, &c, 1);

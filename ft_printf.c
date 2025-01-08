@@ -10,9 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stddef.h>
 #include <stdarg.h>
-#include <unistd.h>
+
+void	ft_putchar(char c, size_t *count);
+void	ft_putnbr_base(int nbr, char *base, size_t *count);
+void	ft_putnbr(int n, size_t *count);
+void	ft_putstr(char *str, size_t *count);
+int		ft_strlen(char *str);
 
 void	ft_check_type(char c, va_list ap, size_t *count)
 {
@@ -65,12 +70,3 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-int	main(void)
-{
-	char	*str;
-
-	str = "| Is it working ?";
-	ft_printf("Doing a test %s\n", str);
-	printf("Doing a test %s\n", str);
-	return (0);
-}

@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
+void	ft_putchar(char c, size_t *count);
+
 void	ft_putnbr(int n, size_t *count)
 {
 	long	nb;

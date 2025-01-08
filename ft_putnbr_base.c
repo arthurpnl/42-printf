@@ -13,6 +13,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
+void	ft_putchar(char c, size_t *count);
+int		ft_strlen(char *str);
+
 void	ft_putnbr_base(int nbr, char *base, size_t *count)
 {
 	long	nb;
