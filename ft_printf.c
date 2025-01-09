@@ -6,7 +6,7 @@
 /*   By: arpenel <arpenel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:31:43 by arpenel           #+#    #+#             */
-/*   Updated: 2025/01/09 14:44:33 by arpenel          ###   ########.fr       */
+/*   Updated: 2025/01/09 15:12:38 by arpenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void	ft_put_pointer(void *ptr, size_t *count)
 {
-	long	adr;
+	unsigned long	adr;
 
-	adr = (unsigned long)ptr;
-	if (ptr == NULL)
+	if (!ptr)
 	{
 		ft_putstr("(nil)", count);
 		return ;
 	}
+	adr = (unsigned long)ptr;
 	ft_putstr("0x", count);
 	ft_putnbr_base(adr, "0123456789abcdef", count);
 }
 
 static void	ft_check_type(char c, va_list ap, size_t *count)
 {
-	if (c == 'p')
-		ft_put_pointer(va_arg(ap, void *), count);
 	if (c == 'c')
 		ft_putchar(va_arg(ap, int), count);
+	else if (c == 'p')
+		ft_put_pointer(va_arg(ap, void *), count);
 	else if (c == 's')
 		ft_putstr(va_arg(ap, char *), count);
 	else if (c == 'i' || c == 'd')
