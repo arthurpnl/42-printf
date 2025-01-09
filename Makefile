@@ -4,7 +4,7 @@ CC = cc
 
 SRCS = ./ft_printf.c ./ft_putchar.c ./ft_putnbr_base.c ./ft_putnbr.c ./ft_putstr.c ./ft_strlen.c
 
-INCLUDES = ft_printf.h
+INCLUDES = /home/arpenel/42-Printf
 
 OBJ = $(SRCS:.c=.o)
 

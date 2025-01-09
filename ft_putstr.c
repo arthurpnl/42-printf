@@ -6,7 +6,7 @@
 /*   By: arpenel <arpenel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:20:42 by arpenel           #+#    #+#             */
-/*   Updated: 2025/01/07 13:23:10 by arpenel          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:27:27 by arpenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	ft_putstr(char *str, size_t *count)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr("(null)", count);
+		return ;
+	}
 	while (str[i])
 	{
 		ft_putchar(str[i], count);
